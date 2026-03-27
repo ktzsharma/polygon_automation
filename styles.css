@@ -124,3 +124,21 @@ iframe {
     border-radius: 4px;
     border: none;
 }
+
+
+/* Hide sub rows by default */
+.sub-row {
+    display: none;
+    background: #1e293b;
+}
+
+/* Main rows styling */
+.main-row {
+    background: #0f172a;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-row:hover {
+    background: #1e293b;
+}
