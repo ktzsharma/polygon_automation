@@ -63,52 +63,68 @@
         </thead>
 
         <tbody>
-            <tr>
-                <td>0</td><td>W00817831AE__to__test2</td><td>718</td>
-                <td>7.522931</td><td>7.015660</td><td class="neg">-0.507271</td>
-                <td>6.763667</td><td>4.440793</td><td class="neg">-2.322874</td>
-            </tr>
-            <tr>
-                <td>1</td><td>W00824383AE__to__test2</td><td>83</td>
-                <td>7.500000</td><td>7.251656</td><td class="neg">-0.248344</td>
-                <td>6.252804</td><td>5.955717</td><td class="neg">-0.297086</td>
-            </tr>
-            <tr>
-                <td>2</td><td>W00813851AE__to__test2</td><td>181</td>
-                <td>7.533133</td><td>7.239458</td><td class="neg">-0.293675</td>
-                <td>8.259864</td><td>5.925828</td><td class="neg">-2.334036</td>
-            </tr>
-            <tr>
-                <td>3</td><td>W00823498AE__to__test1</td><td>46</td>
-                <td>7.265625</td><td>7.500000</td><td class="pos">0.234375</td>
-                <td>6.980130</td><td>5.265807</td><td class="neg">-1.714323</td>
-            </tr>
-            <tr>
-                <td>4</td><td>W00829386AE__to__test1</td><td>7</td>
-                <td>7.500000</td><td>7.050000</td><td class="neg">-0.450000</td>
-                <td>6.554667</td><td>3.383833</td><td class="neg">-3.170833</td>
-            </tr>
-            <tr>
-                <td>5</td><td>W00060245A__to__test1</td><td>34</td>
-                <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
-                <td>6.455500</td><td>3.266556</td><td class="neg">-3.188944</td>
-            </tr>
-            <tr>
-                <td>6</td><td>W00060242A__to__test2</td><td>2</td>
-                <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
-                <td>7.446667</td><td>6.256667</td><td class="neg">-1.190000</td>
-            </tr>
-            <tr>
-                <td>7</td><td>test2</td><td>1070</td>
-                <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
-                <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
-            </tr>
-            <tr>
-                <td>8</td><td>test1</td><td>1070</td>
-                <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
-                <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
-            </tr>
-        </tbody>
+
+    <!-- 🔹 MAIN ROW: test2 -->
+    <tr class="main-row" onclick="toggleRows('test2')">
+        <td>▶</td>
+        <td>test2</td><td>1070</td>
+        <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
+        <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
+    </tr>
+
+    <!-- SUB ROWS (test2) -->
+    <tr class="sub-row test2">
+        <td>0</td><td>W00817831AE__to__test2</td><td>718</td>
+        <td>7.522931</td><td>7.015660</td><td class="neg">-0.507271</td>
+        <td>6.763667</td><td>4.440793</td><td class="neg">-2.322874</td>
+    </tr>
+
+    <tr class="sub-row test2">
+        <td>1</td><td>W00824383AE__to__test2</td><td>83</td>
+        <td>7.500000</td><td>7.251656</td><td class="neg">-0.248344</td>
+        <td>6.252804</td><td>5.955717</td><td class="neg">-0.297086</td>
+    </tr>
+
+    <tr class="sub-row test2">
+        <td>2</td><td>W00813851AE__to__test2</td><td>181</td>
+        <td>7.533133</td><td>7.239458</td><td class="neg">-0.293675</td>
+        <td>8.259864</td><td>5.925828</td><td class="neg">-2.334036</td>
+    </tr>
+
+    <tr class="sub-row test2">
+        <td>6</td><td>W00060242A__to__test2</td><td>2</td>
+        <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
+        <td>7.446667</td><td>6.256667</td><td class="neg">-1.190000</td>
+    </tr>
+
+    <!-- 🔹 MAIN ROW: test1 -->
+    <tr class="main-row" onclick="toggleRows('test1')">
+        <td>▶</td>
+        <td>test1</td><td>1070</td>
+        <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
+        <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
+    </tr>
+
+    <!-- SUB ROWS (test1) -->
+    <tr class="sub-row test1">
+        <td>3</td><td>W00823498AE__to__test1</td><td>46</td>
+        <td>7.265625</td><td>7.500000</td><td class="pos">0.234375</td>
+        <td>6.980130</td><td>5.265807</td><td class="neg">-1.714323</td>
+    </tr>
+
+    <tr class="sub-row test1">
+        <td>4</td><td>W00829386AE__to__test1</td><td>7</td>
+        <td>7.500000</td><td>7.050000</td><td class="neg">-0.450000</td>
+        <td>6.554667</td><td>3.383833</td><td class="neg">-3.170833</td>
+    </tr>
+
+    <tr class="sub-row test1">
+        <td>5</td><td>W00060245A__to__test1</td><td>34</td>
+        <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
+        <td>6.455500</td><td>3.266556</td><td class="neg">-3.188944</td>
+    </tr>
+
+</tbody>
     </table>
 
 </div>
@@ -151,6 +167,16 @@ function openTab(evt, tabName) {
 
 
 <script>
+
+function toggleRows(group) {
+    const rows = document.querySelectorAll("." + group);
+
+    rows.forEach(row => {
+        row.style.display = (row.style.display === "table-row") ? "none" : "table-row";
+    });
+}
+
+
 
 // Add empty row
 function addRow(data = {}) {
