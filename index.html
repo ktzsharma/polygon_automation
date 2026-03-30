@@ -1,269 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Store Optimization Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Store Optimization Dashboard</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>📊 Store Optimization Dashboard</h1>
 
-<div class="container">
-    <h1>📊 Store Optimization Dashboard</h1>
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'inputTab')">📥 Input</button>
+                <button class="tab-button" onclick="openTab(event, 'tableTab')">📋 Summary</button>
+                <button class="tab-button" onclick="openTab(event, 'map1')">🗺️ Polygon View</button>
+                <button class="tab-button" onclick="openTab(event, 'map2')">🔥 Heat Map</button>
+            </div>
 
-    <!-- Tabs -->
-    <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'inputTab')">📥 Input</button>
-        <button class="tab-button" onclick="openTab(event, 'tableTab')">📋 Summary</button>
-        <button class="tab-button" onclick="openTab(event, 'map1')">🗺️ Polygon View</button>
-        <button class="tab-button" onclick="openTab(event, 'map2')">🔥 Heat Map</button>
-    </div>
+        <!-- ✅ INPUT TAB -->
+        <div id="inputTab" class="tab-content active">
 
- <!-- ✅ INPUT TAB -->
-<div id="inputTab" class="tab-content active">
+            <div class="input-controls">
+                <button onclick="addRow()">➕ Add Row</button>
+                <button onclick="downloadSample()">📥 Download Sample CSV</button>
+                <input type="file" id="csvFile" accept=".csv" onchange="uploadCSV(event)">
+            </div>
 
-    <div class="input-controls">
-        <button onclick="addRow()">➕ Add Row</button>
-        <button onclick="downloadSample()">📥 Download Sample CSV</button>
-        <input type="file" id="csvFile" accept=".csv" onchange="uploadCSV(event)">
-    </div>
+            <table id="inputTable">
+                <thead>
+                    <tr>
+                        <th>S No</th>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Lat</th>
+                        <th>Lng</th>
+                        <th>Custom Polygon</th>
+                        <th>❌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
 
-    <table id="inputTable">
-        <thead>
-            <tr>
-                <th>S No</th>
-                <th>Name</th>
-                <th>Country</th>
-                <th>Lat</th>
-                <th>Lng</th>
-                <th>Custom Polygon</th>
-                <th>❌</th>
+        </div>
+        <!-- SUMMARY TABLE -->
+        <div id="tableTab" class="tab-content">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shift</th>
+                        <th>OPD Shifted</th>
+                        <th>Customers</th>
+                        <th>Old CPO</th>
+                        <th>New CPO</th>
+                        <th>CPO Change</th>
+                        <th>Old ETA</th>
+                        <th>New ETA</th>
+                        <th>ETA Change</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+            <!-- 🔹 MAIN ROW: test2 -->
+            <tr class="main-row" onclick="toggleRows('test2')">
+                <td>▶</td>
+                <td>test2</td><td>1070</td>
+                <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
+                <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
             </tr>
-        </thead>
-        <tbody>
+
+            <!-- SUB ROWS (test2) -->
+            <tr class="sub-row test2">
+                <td>0</td><td>W00817831AE__to__test2</td><td>718</td>
+                <td>7.522931</td><td>7.015660</td><td class="neg">-0.507271</td>
+                <td>6.763667</td><td>4.440793</td><td class="neg">-2.322874</td>
+            </tr>
+
+            <tr class="sub-row test2">
+                <td>1</td><td>W00824383AE__to__test2</td><td>83</td>
+                <td>7.500000</td><td>7.251656</td><td class="neg">-0.248344</td>
+                <td>6.252804</td><td>5.955717</td><td class="neg">-0.297086</td>
+            </tr>
+
+            <tr class="sub-row test2">
+                <td>2</td><td>W00813851AE__to__test2</td><td>181</td>
+                <td>7.533133</td><td>7.239458</td><td class="neg">-0.293675</td>
+                <td>8.259864</td><td>5.925828</td><td class="neg">-2.334036</td>
+            </tr>
+
+            <tr class="sub-row test2">
+                <td>6</td><td>W00060242A__to__test2</td><td>2</td>
+                <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
+                <td>7.446667</td><td>6.256667</td><td class="neg">-1.190000</td>
+            </tr>
+
+            <!-- 🔹 MAIN ROW: test1 -->
+            <tr class="main-row" onclick="toggleRows('test1')">
+                <td>▶</td>
+                <td>test1</td><td>1070</td>
+                <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
+                <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
+            </tr>
+
+            <!-- SUB ROWS (test1) -->
+            <tr class="sub-row test1">
+                <td>3</td><td>W00823498AE__to__test1</td><td>46</td>
+                <td>7.265625</td><td>7.500000</td><td class="pos">0.234375</td>
+                <td>6.980130</td><td>5.265807</td><td class="neg">-1.714323</td>
+            </tr>
+
+            <tr class="sub-row test1">
+                <td>4</td><td>W00829386AE__to__test1</td><td>7</td>
+                <td>7.500000</td><td>7.050000</td><td class="neg">-0.450000</td>
+                <td>6.554667</td><td>3.383833</td><td class="neg">-3.170833</td>
+            </tr>
+
+            <tr class="sub-row test1">
+                <td>5</td><td>W00060245A__to__test1</td><td>34</td>
+                <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
+                <td>6.455500</td><td>3.266556</td><td class="neg">-3.188944</td>
+            </tr>
+
         </tbody>
-    </table>
+            </table>
 
-</div>
-<!-- SUMMARY TABLE -->
-<div id="tableTab" class="tab-content">
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Shift</th>
-                <th>OPD Shifted</th>
-                <th>Customers</th>
-                <th>Old CPO</th>
-                <th>New CPO</th>
-                <th>CPO Change</th>
-                <th>Old ETA</th>
-                <th>New ETA</th>
-                <th>ETA Change</th>
-            </tr>
-        </thead>
+            <!-- MAP 1 -->
+        <div id="map1" class="tab-content">
+            <iframe src="https://ktzsharma.github.io/noonmaps/polygon_factals_view__1.0.html"></iframe>
+        </div>
 
-        <tbody>
+        <!-- MAP 2 -->
+        <div id="map2" class="tab-content">
+            <iframe src="https://ktzsharma.github.io/noonmaps/heat_map__1.0.html"></iframe>
+        </div>
 
-    <!-- 🔹 MAIN ROW: test2 -->
-    <tr class="main-row" onclick="toggleRows('test2')">
-        <td>▶</td>
-        <td>test2</td><td>1070</td>
-        <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
-        <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
-    </tr>
-
-    <!-- SUB ROWS (test2) -->
-    <tr class="sub-row test2">
-        <td>0</td><td>W00817831AE__to__test2</td><td>718</td>
-        <td>7.522931</td><td>7.015660</td><td class="neg">-0.507271</td>
-        <td>6.763667</td><td>4.440793</td><td class="neg">-2.322874</td>
-    </tr>
-
-    <tr class="sub-row test2">
-        <td>1</td><td>W00824383AE__to__test2</td><td>83</td>
-        <td>7.500000</td><td>7.251656</td><td class="neg">-0.248344</td>
-        <td>6.252804</td><td>5.955717</td><td class="neg">-0.297086</td>
-    </tr>
-
-    <tr class="sub-row test2">
-        <td>2</td><td>W00813851AE__to__test2</td><td>181</td>
-        <td>7.533133</td><td>7.239458</td><td class="neg">-0.293675</td>
-        <td>8.259864</td><td>5.925828</td><td class="neg">-2.334036</td>
-    </tr>
-
-    <tr class="sub-row test2">
-        <td>6</td><td>W00060242A__to__test2</td><td>2</td>
-        <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
-        <td>7.446667</td><td>6.256667</td><td class="neg">-1.190000</td>
-    </tr>
-
-    <!-- 🔹 MAIN ROW: test1 -->
-    <tr class="main-row" onclick="toggleRows('test1')">
-        <td>▶</td>
-        <td>test1</td><td>1070</td>
-        <td>7.508892</td><td>7.084883</td><td class="neg">-0.424010</td>
-        <td>6.937531</td><td>4.746146</td><td class="neg">-2.191385</td>
-    </tr>
-
-    <!-- SUB ROWS (test1) -->
-    <tr class="sub-row test1">
-        <td>3</td><td>W00823498AE__to__test1</td><td>46</td>
-        <td>7.265625</td><td>7.500000</td><td class="pos">0.234375</td>
-        <td>6.980130</td><td>5.265807</td><td class="neg">-1.714323</td>
-    </tr>
-
-    <tr class="sub-row test1">
-        <td>4</td><td>W00829386AE__to__test1</td><td>7</td>
-        <td>7.500000</td><td>7.050000</td><td class="neg">-0.450000</td>
-        <td>6.554667</td><td>3.383833</td><td class="neg">-3.170833</td>
-    </tr>
-
-    <tr class="sub-row test1">
-        <td>5</td><td>W00060245A__to__test1</td><td>34</td>
-        <td>7.500000</td><td>7.000000</td><td class="neg">-0.500000</td>
-        <td>6.455500</td><td>3.266556</td><td class="neg">-3.188944</td>
-    </tr>
-
-</tbody>
-    </table>
-
-</div>
-
-    <!-- MAP 1 -->
-<div id="map1" class="tab-content">
-
-    <div class="tab-content" id="map1">
-    <a href="https://ktzsharma.github.io/noonmaps/polygon_factals_view__1.0.html" target="_blank">
-        Open Polygon View
-    </a>
-</div>
-
-    
-    
-</div>
-
-<!-- MAP 2 -->
-<div id="map2" class="tab-content">
-
-        <div class="tab-content" id="map1">
-    <a href="https://ktzsharma.github.io/noonmaps/heat_map__1.0.html" target="_blank">
-        Open Polygon View
-    </a>
-</div>
-    
-
-</div>
-
-</div>
-
-
-
-
-
-
-<script>
-function openTab(evt, tabName) {
-    let tabcontent = document.getElementsByClassName("tab-content");
-    let tabbuttons = document.getElementsByClassName("tab-button");
-
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove("active");
-    }
-
-    for (let i = 0; i < tabbuttons.length; i++) {
-        tabbuttons[i].classList.remove("active");
-    }
-
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
-}
-</script>
-
-</body>
+        </div>
+    </body>
 </html>
-
-
-
-
-
-<script>
-
-function toggleRows(group) {
-    const rows = document.querySelectorAll("." + group);
-
-    rows.forEach(row => {
-        row.style.display = (row.style.display === "table-row") ? "none" : "table-row";
-    });
-}
-
-
-
-// Add empty row
-function addRow(data = {}) {
-    const table = document.getElementById("inputTable").getElementsByTagName('tbody')[0];
-
-    const row = table.insertRow();
-
-    const fields = ['s_no','name','country_code','lat','lng','custom_polygon'];
-
-    fields.forEach(field => {
-        const cell = row.insertCell();
-        const input = document.createElement("input");
-        input.value = data[field] || "";
-        input.placeholder = field;
-        cell.appendChild(input);
-    });
-
-    // Delete button
-    const delCell = row.insertCell();
-    const btn = document.createElement("button");
-    btn.innerText = "❌";
-    btn.onclick = () => row.remove();
-    delCell.appendChild(btn);
-}
-
-
-// Upload CSV
-function uploadCSV(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        const rows = e.target.result.split("\n").slice(1);
-
-        rows.forEach(row => {
-            if (!row.trim()) return;
-
-            const cols = row.split(",");
-
-            addRow({
-                s_no: cols[0],
-                name: cols[1],
-                country_code: cols[2],
-                lat: cols[3],
-                lng: cols[4],
-                custom_polygon: cols[5]
-            });
-        });
-    };
-
-    reader.readAsText(file);
-}
-
-
-// Download sample CSV
-function downloadSample() {
-    const csv = `s_no,name,country_code,lat,lng,custom_polygon
-1,test1,AE,25.2048,55.2708,
-2,test2,AE,25.2769,55.2962,POLYGON((55.27 25.20,55.28 25.21,55.29 25.22))`;
-
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "sample_input.csv";
-    a.click();
-}
-
-</script>
